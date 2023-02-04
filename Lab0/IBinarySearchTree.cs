@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Lab0
 {
 	public interface IBinarySearchTree<T>

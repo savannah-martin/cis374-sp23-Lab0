@@ -9,7 +9,7 @@ namespace Lab0
 
 		public BinarySearchTreeNode<T> Left { get; set; }
         public BinarySearchTreeNode<T> Right { get; set; }
-        public BinarySearchTreeNode<T> Parent { get; set; }
+        public BinarySearchTreeNode<T>? Parent { get; set; }
 
         public BinarySearchTreeNode(int key, T value)
 		{
