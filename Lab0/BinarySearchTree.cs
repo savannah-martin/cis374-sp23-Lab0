@@ -216,10 +216,6 @@ namespace Lab0
 
         public BinarySearchTreeNode<T> Prev(BinarySearchTreeNode<T> node)
         {
-            //if (node == null)
-            //{
-            //    return null;
-            //}
             if (node.Left != null)
             {
                 return MaxNode(node.Left);
@@ -281,6 +277,7 @@ namespace Lab0
 
         public void Remove(int key)
         {
+
             var node = GetNode(key);
             var parent = node.Parent;
 
@@ -293,10 +290,10 @@ namespace Lab0
 
 
             //the root of the tree which doesn't have a parent node. Before you
-            //handle case 1 or case 2, you have to do a special case for the root node.
+            //handle case 1 or case 2, you have to do a special case for the root node
 
             // 3) parent with 2 children
-            if (Root == node)
+            if (node.Left != null && node.Right != null)
             {
                 // Find the node to remove
                 // Find the next node (successor)
@@ -313,7 +310,7 @@ namespace Lab0
                 return;
             }
 
-            // 1) leaf node
+            // 1) Leaf node
             if (node.Left == null && node.Right == null)
             {
                 if (parent == null)
@@ -334,7 +331,7 @@ namespace Lab0
                 return;
             }
 
-            // 2) parent with 1 child
+            // 2) parent with one child
             if (node.Left == null && node.Right != null)
             {
                 // only has a right child
@@ -343,10 +340,10 @@ namespace Lab0
                 if (parent == null)
                 {
                     Root = child;
-                    Root.Parent = null;
+                    //Root.Parent = null;
                 }
 
-                if (parent.Left == node)
+                else if (parent.Left == node)
                 {
                     parent.Left = child;
                     child.Parent = parent;
@@ -368,10 +365,10 @@ namespace Lab0
                 if (parent == null)
                 {
                     Root = child;
-                    Root.Parent = null;
+                    //Root.Parent = null;
                 }
 
-                if (parent.Left == node)
+                else if (parent.Left == node)
                 {
                     parent.Left = child;
                     child.Parent = parent;
@@ -385,7 +382,7 @@ namespace Lab0
                     child.Parent = parent;
 
                     node.Parent = null;
-                    node.Right = null;
+                    node.Left = null;
                 }
 
                 return;
@@ -543,11 +540,5 @@ namespace Lab0
 
             return MaxNodeRecursive(node.Right);
         }
-
-        List<BinarySearchTreeNode<T>> IBinarySearchTree<T>.RangeSearch(int min, int max)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
-
